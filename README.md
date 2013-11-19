@@ -22,12 +22,12 @@ FTLocationManager *locationManager = [FTLocationManager sharedManager];
     {
         //  Handle error here
         if (locationServicesDisabled) {
-            //  Location services are disabled, you can ask the user to enable the for example
+            //  Location services are disabled, you can ask the user to enable them for example
         }
     }
     else
     {
-        //  Do whatever you want current user's location
+        //  Do whatever you want with the current user's location
     }
 }];
 ```
@@ -36,17 +36,17 @@ You are done!
 
 ###Additional configuration
 
-You can customize behavior of `FTLocationManager` using some properties, but you do not generally need to to this as it has uses reasonable default values.
+You can customize behavior of `FTLocationManager` using few properties, but you do not generally need to do this as it uses reasonable default values.
 
 ####maxErrorsCount
-Manager automatically skips few first received error in order to really get some location.
+Manager automatically skips few first received errors in order to really get some location.
 
-Default value: 3 errors (handler block with error will be fired on 3rd error returned by internal `CLLocationManager`
+Default value: 3 errors (handler block with error will be called on 3rd error returned by internal `CLLocationManager`
 
 ####errorTimeout
 Manager automatically uses timeout to make sure handler block will be really called in some reasonable time from requesting the location.
 
-Default value: 3s (if the internal `CLLocationManager` does not give any location in 3s from calling `updateLocationWithCompletionHandler:`, handler block will be called with custom error with `FTLocationManagerErrorDomain` domain)
+Default value: 3s (if the internal `CLLocationManager` does not give any location in 3s from calling `updateLocationWithCompletionHandler:`, handler block will be called with custom error with `FTLocationManagerErrorDomain` domain and `FTLocationManagerErrorCodeTimedOut` status code)
 
 ##Implementation details
 
@@ -55,7 +55,7 @@ Default value: 3s (if the internal `CLLocationManager` does not give any locatio
 
 ##Compatibility
 
-1. Tested with iOS 5.0+ with ARC
+Tested on iOS 5.0+ with ARC
 
 ##Contact
 
@@ -63,12 +63,26 @@ FTCoreText is developed by [FuerteInt](http://fuerteint.com). Please [drop us an
 
 ##License
 
-Open Source Initiative OSI - The MIT License (MIT):Licensing [OSI Approved License] The MIT License (MIT)
+<pre>
+The MIT License (MIT)
 
 Copyright (c) 2013 Fuerte International
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+</pre>

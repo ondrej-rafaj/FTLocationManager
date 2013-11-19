@@ -56,7 +56,7 @@
     [_activityIndicatorView startAnimating];
     
     
-    //  Get FTLocatioManager singleton instance
+    //  Get FTLocationManager singleton instance
     FTLocationManager *locationManager = [FTLocationManager sharedManager];
     
     //  Optionaly you can change properties like error timeout and errors count threshold

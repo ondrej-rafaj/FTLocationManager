@@ -34,6 +34,26 @@
 
 @class CLLocation;
 
+/**
+ *  Error domain used for error created directly by FTLocationManager
+ */
+extern NSString *const FTLocationManagerErrorDomain;
+
+/**
+ *  FTLocationManagerErrorDomain custom error codes
+ */
+typedef NS_ENUM(NSInteger, FTLocationManagerErrorCode) {
+    FTLocationManagerErrorCodeUnknown = 0,
+    FTLocationManagerErrorCodeTimedOut
+};
+
+/**
+ *  Typedef for completion handler block
+ *
+ *  @param location                 Received location or nil if there was an error
+ *  @param error                    Error which occured while getting location or nil if everything went fine. Either the originating CLLocationManager error is passed or custom error with FTLocationManagerErrorDomain domain and FTLocationManagerErrorCode status code
+ *  @param locationServicesDisabled YES if there was any error and it was because the Location Services are disabled for this. This is very often case to be checked so it is directly passed to the completion handler for .convenience
+ */
 typedef void (^FTLocationManagerCompletionHandler)(CLLocation *location, NSError *error, BOOL locationServicesDisabled);
 
 
@@ -53,7 +73,7 @@ typedef void (^FTLocationManagerCompletionHandler)(CLLocation *location, NSError
 
 /**
  *  How many seconds should the manager try to obtain location before failing on timeout.
- *  Minimum value is 0.1s. Values lower than 0.1s will be automatically set to 0.1s
+ *  Minimum value is 0.1s. Values lower than 0.1s will be automatically set to 0.1s.
  *  Default: 3s
  */
 @property (nonatomic, assign) NSTimeInterval errorTimeout;
@@ -71,11 +91,7 @@ typedef void (^FTLocationManagerCompletionHandler)(CLLocation *location, NSError
  *  there is no logical use to update location without using it.
  *
  *  @param completionBlock Comletion block called on when the location is received.
- *      CLLocation * - retrieved CLLocation
- *      NSError * - NSError representing the error returned by CLLocationManager
- *      BOOL locationServicesDisabled - YES if there was any error and it was due to the
- *          location services are disabled for this. This is very often case to be checked
- *          so it is directly passed to the completion handler for a convenience
+ *  @see FTLocationManagerCompletionHandler
  */
 - (void)updateLocationWithCompletionHandler:(FTLocationManagerCompletionHandler)completion;
 

@@ -34,6 +34,8 @@
 
 #import <CoreLocation/CoreLocation.h>
 
+NSString *const FTLocationManagerErrorDomain = @"FTLocationManagerErrorDomain";
+
 //  Private interface encapsulating functionality
 @interface FTLocationManager () <CLLocationManagerDelegate>
 
@@ -191,7 +193,15 @@
 
 - (void)locationUpdatingTimedOut
 {
-    [self locationUpdatingFailedWithError:nil locationServicesDisabled:NO];
+    //  Create custom error
+    NSDictionary *userInfo = @{
+       NSLocalizedDescriptionKey: NSLocalizedString(@"Failed to get current location.", @"FTLocationManager - Localized description of the error sent if the location request times out"),
+       NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Request on getting a current location timed out.", @"FTLocationManager - Localized failure reason of the error sent if the location request times out")
+    };
+    
+    NSError *error = [NSError errorWithDomain:FTLocationManagerErrorDomain code:FTLocationManagerErrorCodeTimedOut userInfo:userInfo];
+    
+    [self locationUpdatingFailedWithError:error locationServicesDisabled:NO];
 }
 
 - (void)startErrorTimeout

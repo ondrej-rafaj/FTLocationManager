@@ -13,7 +13,7 @@ Utility class for simple block-based getting of current user's location on iOS. 
 ### Use it
 
 ```objective-c
-//  Get FTLocatioManager singleton instance
+//  Get FTLocationManager singleton instance
 FTLocationManager *locationManager = [FTLocationManager sharedManager];
 
 //  Ask the location manager to get current location and get notified using provided handler block
@@ -46,7 +46,7 @@ Default value: 3 errors (handler block with error will be fired on 3rd error ret
 ####errorTimeout
 Manager automatically uses timeout to make sure handler block will be really called in some reasonable time from requesting the location.
 
-Default value: 3s (if the internal `CLLocationManager` does not give any location in 3s from calling `updateLocationWithCompletionHandler:`, handler block will be called)
+Default value: 3s (if the internal `CLLocationManager` does not give any location in 3s from calling `updateLocationWithCompletionHandler:`, handler block will be called with custom error with `FTLocationManagerErrorDomain` domain)
 
 ##Implementation details
 

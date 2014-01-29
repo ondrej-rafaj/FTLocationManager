@@ -59,7 +59,7 @@ Tested on iOS 5.0+ with ARC
 
 ##Contact
 
-FTCoreText is developed by [FuerteInt](http://fuerteint.com). Please [drop us an email](mailto:open-source@fuerteint.com) to let us know you how you are using this component.
+FTLocationManager is developed by [FuerteInt](http://fuerteint.com). Please [drop us an email](mailto:open-source@fuerteint.com) to let us know you how you are using this component.
 
 ##License
 

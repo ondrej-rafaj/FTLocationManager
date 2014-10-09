@@ -36,6 +36,19 @@
 
 NSString *const FTLocationManagerErrorDomain = @"FTLocationManagerErrorDomain";
 
+// CLLocationManager category for new iOS8 Location Request
+@implementation CLLocationManager (Request)
+
+- (void)iOS8LocationRequest
+{
+    SEL requestSelector = NSSelectorFromString(@"requestWhenInUseAuthorization");
+    if ([self respondsToSelector:requestSelector]) {
+        ((void (*)(id, SEL))[self methodForSelector:requestSelector])(self, requestSelector);
+    }
+}
+
+@end
+
 //  Private interface encapsulating functionality
 @interface FTLocationManager () <CLLocationManagerDelegate>
 
@@ -43,7 +56,6 @@ NSString *const FTLocationManagerErrorDomain = @"FTLocationManagerErrorDomain";
 @property (nonatomic, copy) FTLocationManagerCompletionHandler completionBlock;
 
 @end
-
 
 @implementation FTLocationManager {
     

@@ -117,6 +117,7 @@ NSString *const FTLocationManagerErrorDomain = @"FTLocationManagerErrorDomain";
     if(!_locationManager)
     {
         _locationManager = [[CLLocationManager alloc] init];
+        [_locationManager iOS8LocationRequest];
         _locationManager.delegate = self;
     }
     
